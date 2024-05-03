@@ -16,17 +16,17 @@ pipeline {
             }
                 post {
         failure {
-            // to send the email notifications if pipeline fails
+            // to send the email notifications if test stage fails
             emailext attachLog: true,
-                subject: 'Failure of the Pipeline',
-                   body: 'The jenkins pipeline resulted in a failure!',
+                subject: 'Failure of the Testing stage',
+                   body: 'The unit and integration tests resulted in a failure!',
                      to: '7136tejasri@gmail.com'
         }
         success {
-            // to send the email notifications if pipeline succeeds
+            // to send the email notifications if test stage succeeds
             emailext attachLog: true,
-                subject: 'Success of the Pipeline',
-                   body: 'The jenkins pipeline resulted in a success!',
+                subject: 'Success of the Testing stage',
+                   body: 'The unit and integration tests resulted in a success!',
                      to: '7136tejasri@gmail.com'
         }
     }
@@ -44,17 +44,17 @@ pipeline {
             }
                 post {
         failure {
-            // to send the email notifications if pipeline fails
+            // to send the email notifications if scan stage fails
             emailext attachLog: true,
-                subject: 'Failure of the Pipeline',
-                   body: 'The jenkins pipeline resulted in a failure!',
+                subject: 'Failure of the security scan stage',
+                   body: 'The security scan stage resulted in a failure!',
                      to: '7136tejasri@gmail.com'
         }
         success {
-            // to send the email notifications if pipeline succeeds
+            // to send the email notifications if scan stage succeeds
             emailext attachLog: true,
-                subject: 'Success of the Pipeline',
-                   body: 'The jenkins pipeline resulted in a success!',
+                subject: 'Success of the security scan stage',
+                   body: 'The security scan stage resulted in a success!',
                      to: '7136tejasri@gmail.com'
         }
     }
