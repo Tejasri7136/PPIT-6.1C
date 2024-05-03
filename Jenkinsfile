@@ -14,6 +14,22 @@ pipeline {
                 echo 'Command: mvn unit test'
                 echo 'Command: mvn integration test'
             }
+                post {
+        failure {
+            // to send the email notifications if pipeline fails
+            emailext attachLog: true,
+                subject: 'Failure of the Pipeline',
+                   body: 'The jenkins pipeline resulted in a failure!',
+                     to: '7136tejasri@gmail.com'
+        }
+        success {
+            // to send the email notifications if pipeline succeeds
+            emailext attachLog: true,
+                subject: 'Success of the Pipeline',
+                   body: 'The jenkins pipeline resulted in a success!',
+                     to: '7136tejasri@gmail.com'
+        }
+    }
         }
         stage('Code Analysis') {
             steps {
@@ -26,6 +42,22 @@ pipeline {
                 echo 'Security scan stage is running'
                 echo 'Command: command for security scan'
             }
+                post {
+        failure {
+            // to send the email notifications if pipeline fails
+            emailext attachLog: true,
+                subject: 'Failure of the Pipeline',
+                   body: 'The jenkins pipeline resulted in a failure!',
+                     to: '7136tejasri@gmail.com'
+        }
+        success {
+            // to send the email notifications if pipeline succeeds
+            emailext attachLog: true,
+                subject: 'Success of the Pipeline',
+                   body: 'The jenkins pipeline resulted in a success!',
+                     to: '7136tejasri@gmail.com'
+        }
+    }
         }
         stage('Deploy to Staging') {
             steps {
@@ -44,23 +76,6 @@ pipeline {
                 echo 'The deploy to production stage is running'
                 echo 'Command: deploy to production command'
             }
-        }
-    }
-
-    post {
-        failure {
-            // to send the email notifications if pipeline fails
-            emailext attachLog: true,
-                subject: 'Failure of the Pipeline',
-                   body: 'The jenkins pipeline resulted in a failure!',
-                     to: '7136tejasri@gmail.com'
-        }
-        success {
-            // to send the email notifications if pipeline succeeds
-            emailext attachLog: true,
-                subject: 'Success of the Pipeline',
-                   body: 'The jenkins pipeline resulted in a success!',
-                     to: '7136tejasri@gmail.com'
         }
     }
 }
